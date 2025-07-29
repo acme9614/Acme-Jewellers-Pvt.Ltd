@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* brandingSlider  */
+.swiper-pagination-bullet {
+  background-color: #d1d5db !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 6px !important;
+  border-radius: 9999px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #450f1e !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 16px;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+}
+.delay-1 {
+  animation-delay: 0.2s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+/* deskstop Tabs  */
+
+.clip-banner {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+/* about us start  */
+
+
+
+/* boxes  */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+/* about us end  */
+

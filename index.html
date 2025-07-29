@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acme Jewellers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Alice -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- header  -->
+    <div class="relative">
+      <!-- Drawer -->
+      <div
+        id="drawer"
+        class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300"
+      >
+        <div class="flex items-center justify-between gap-4 p-4 border-b">
+          <a href="#" class="flex items-center space-x-2 invert">
+            <img
+              src="assets/padm_logo.jpg"
+              alt="padm-logo"
+              class="invert w-[150px] object-contain"
+            />
+          </a>
+          <!-- <h2 class="text-lg font-bold font-playfair">Menu</h2> -->
+          <button onclick="closeDrawer()" class="text-xl">✖</button>
+        </div>
+        <ul class="p-4 space-y-3 text-lg">
+          <li>
+            <a
+              href="#"
+              onclick="navigateToScheme()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-gem"></i> Scheme</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToBankDetails()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-building-columns"></i> Bank</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToKyc()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><img
+                class="w-5 h-6"
+                src="https://cdn-icons-png.flaticon.com/128/18282/18282110.png"
+                alt="KYC"
+              />
+              KYC</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToRate()"
+              class="flex items-center gap-4 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-indian-rupee-sign"></i> Rate</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateSchemeRecords()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-file-lines"></i> Records</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToCustomerCard()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-address-card"></i> Card</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateTransactionHistory()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-clock-rotate-left"></i> History</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToMyOrder()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-cart-shopping"></i> Order</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToUserProfile()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-user"></i> Profile</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToDigitalGold()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-coins"></i> Gold</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToPanchang()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><img
+                class="w-5 h-5"
+                src="https://cdn-icons-png.flaticon.com/128/3013/3013143.png"
+                alt="panchang"
+              />
+              Panchang</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="navigateToSetting()"
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              ><i class="fa-solid fa-gear"></i> Settings</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="overlay"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+        onclick="closeDrawer()"
+      ></div>
+
+      <!-- Header -->
+      <div class="bg-white w-full relative">
+        <div class="max-w-screen-xl mx-auto px-4 relative">
+          <div class="h-20 flex items-center justify-start relative">
+            <!-- Left: Menu Icon -->
+            <div class="z-50">
+              <button
+                id="menuButton"
+                onclick="openDrawer()"
+                class="text-3xl text-black focus:outline-none"
+              >
+                ☰
+              </button>
+            </div>
+
+            <!-- Center: Logo -->
+            <div
+              class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <a href="#" class="flex items-center space-x-2">
+                <img
+                  src="assets/padm_logo.jpg"
+                  alt="acme-padm-logo"
+                  class="w-[150px] object-contain"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BrandingSwiper  -->
+
+    <div class="relative w-full">
+      <div class="swiper" id="BrandingSwiper">
+        <div class="swiper-wrapper lg:h-[90vh]">
+          <!-- Slide 1 -->
+          <div class="swiper-slide relative lg:h-[90vh]">
+            <img
+              src="assets/slider2.jpg"
+              class="w-full h-[300px] md:h-full object-cover"
+              alt="Slide 1"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4"
+            >
+              <h1
+                class="text-white text-4xl md:text-6xl font-bold mb-4 font-alice fade-in-up delay-1"
+              >
+                Where Elegance Meets
+              </h1>
+              <p
+                class="text-white text-lg md:text-xl mb-6 max-w-xl font-alice fade-in-up delay-2"
+              >
+                Discover the art of sophistication with our curated collection
+                of exquisite jewelry.
+              </p>
+              <a
+                href="#"
+                class="relative overflow-hidden px-6 py-3 border-2 border-white text-white text-lg font-semibold group fade-in-up delay-3 glow-hover"
+              >
+                <span
+                  class="relative z-10 group-hover:text-black transition font-alice"
+                  >Explore Jewels</span
+                >
+                <span
+                  class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-all duration-300 z-0"
+                ></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide relative lg:h-[90vh]">
+            <img
+              src="assets/slider1.jpg"
+              class="w-full h-[300px] md:h-full object-cover"
+              alt="Slide 2"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4"
+            >
+              <h1
+                class="text-white text-4xl md:text-6xl font-bold mb-4 font-alice fade-in-up delay-1"
+              >
+                Where Luxury Shines
+              </h1>
+              <p
+                class="text-white text-lg md:text-xl mb-6 max-w-xl font-alice fade-in-up delay-2"
+              >
+                Discover the art of sophistication with our curated collection
+                of exquisite jewelry.
+              </p>
+              <a
+                href="#"
+                class="relative overflow-hidden px-6 py-3 border-2 border-white text-white text-lg font-semibold group fade-in-up delay-3 glow-hover"
+              >
+                <span
+                  class="relative z-10 group-hover:text-black transition font-alice"
+                  >Explore Jewels</span
+                >
+                <span
+                  class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-all duration-300 z-0"
+                ></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide relative lg:h-[90vh]">
+            <img
+              src="assets/slider3.jpg"
+              class="w-full h-[300px] md:h-full object-cover"
+              alt="Slide 3"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4"
+            >
+              <h1
+                class="text-white text-4xl md:text-6xl font-bold mb-4 font-alice fade-in-up delay-1"
+              >
+                Where Beauty Glows
+              </h1>
+              <p
+                class="text-white text-lg md:text-xl mb-6 max-w-xl font-alice fade-in-up delay-2"
+              >
+                Discover the art of sophistication with our curated collection
+                of exquisite jewelry.
+              </p>
+              <a
+                href="#"
+                class="relative overflow-hidden px-6 py-3 border-2 border-white text-white text-lg font-semibold group fade-in-up delay-3 glow-hover"
+              >
+                <span
+                  class="relative z-10 group-hover:text-black transition font-alice"
+                  >Explore Jewels</span
+                >
+                <span
+                  class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-all duration-300 z-0"
+                ></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Arrows -->
+        <div
+          class="swiper-button-prev !text-black font-bold w-8 h-8 bg-white hover:!bg-[#37160F] hover:!text-white rounded-full p-2 shadow-xl hidden md:flex"
+        ></div>
+        <div
+          class="swiper-button-next !text-black font-bold w-8 h-8 bg-white hover:!bg-[#37160F] hover:!text-white rounded-full p-2 shadow-xl hidden md:flex"
+        ></div>
+      </div>
+    </div>
+
+    <!-- deskstop tabs  -->
+    <div class="font-alice">
+      <!-- Mobile Swiper -->
+      <div class="md:hidden px-2 py-10 ">
+        <div class="swiper tabSwiper">
+          <div class="swiper-wrapper" id="swiperContainer"></div>
+        </div>
+      </div>
+
+      <!-- Desktop Grid -->
+      <div
+        class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4 justify-items-center md:px-4 lg:px-48 py-10"
+        id="gridContainer"
+      ></div>
+    </div>
+
+    <!-- About us  -->
+    <section class="py-4 px-4 md:px-10">
+      <div>
+        <div class="text-center" data-aos="fade-down">
+          <h2 class="text-3xl md:text-4xl font-alice my-6">
+            <p class="text-xl md:text-2xl font-alice uppercase">About Us</p>
+            Crafting Timeless Elegance
+          </h2>
+        </div>
+
+        <!-- Image Section -->
+        <div class="relative" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="overflow-hidden">
+            <img
+              src="https://as1.ftcdn.net/v2/jpg/13/93/00/42/1000_F_1393004212_dnwV7EP0jmeYpgoeRmAj7Cw4dKcI1tor.jpg"
+              alt="Story Image"
+              class="w-full h-auto transform transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div data-aos="fade-up" data-aos-delay="200">
+          <p class="text-lg my-4 font-alice">
+            Welcome to JewelleryZ our story, where we blend tradition with
+            modern elegance. Our journey began with a passion for creating
+            exquisite jewelry that tells a story of craftsmanship and artistry.
+            Each piece is designed to reflect the beauty of timeless elegance,
+            making it a perfect addition to your collection. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Ab, ullam porro dolor laborum
+            nesciunt doloremque non minima eveniet cum, illo iure ad. Ipsa
+            quaerat dolorem praesentium quos aut provident perspiciatis sunt
+            omnis aliquid nisi. Corrupti illo quod voluptate? Quas nam, sequi
+            debitis non fugiat, quaerat nemo ad obcaecati soluta deleniti
+            aliquam eaque error? Dolor beatae quibusdam, aspernatur iusto, saepe
+            exercitationem aperiam tempora nobis voluptate possimus, ut minus
+            explicabo. Neque pariatur, quibusdam veniam consequatur esse nobis
+            eaque error repudiandae temporibus ab voluptatem porro? Iusto
+            similique itaque soluta eligendi veritatis enim officia quibusdam
+            autem, dignissimos optio repellendus, quam numquam sint facilis
+            natus modi nobis quis tenetur. Aliquam, tenetur sed debitis aut
+            cumque dicta mollitia, ab vel nulla animi ut itaque consequatur,
+            voluptas distinctio est dignissimos corporis ipsam ratione. Illo,
+            voluptas perspiciatis quos eum blanditiis a molestiae dolorum magni,
+            explicabo quas officia praesentium. Praesentium soluta, nihil
+            consectetur impedit natus cumque quaerat dolores id illo corporis,
+            doloribus ipsa! Blanditiis quasi veniam id fugiat dolores dolore
+            animi perferendis accusamus et quam voluptas beatae aspernatur qui,
+            in dolor laudantium quibusdam. Ipsum temporibus obcaecati modi iste
+            tempora vitae, dolore eligendi architecto, at labore harum enim,
+            quam eveniet inventore doloremque ut? Veniam officiis similique,
+            perferendis vel expedita odit?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- collection  -->
+    <section class="px-4 md:px-8">
+      <div class="py-12 px-4 max-w-7xl mx-auto text-center">
+        <!-- Title -->
+        <div class="mb-8" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-alice mb-4">Our Collection</h2>
+          <p class="text-lg max-w-3xl mx-auto font-alice">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </div>
+
+        <!-- Categories Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <!-- Category Card -->
+          <a href="#" class="relative group overflow-hidden shadow-md">
+            <img
+              src="https://cdn.prod.website-files.com/670f7de6dec5c0c82ae616bd/6713f5fa3210f9f512297f04_pexels-anastasia-nagibina-1116204043-27687905.avif"
+              alt="Rings"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 category-overlay"></div>
+            <div class="absolute bottom-4 left-0 w-full text-center text-white">
+              <h3 class="text-xl font-medium uppercase">Rings</h3>
+            </div>
+          </a>
+
+          <!-- Ear Rings -->
+          <a href="#" class="relative group overflow-hidden shadow-md">
+            <img
+              src="https://cdn.prod.website-files.com/670f7de6dec5c0c82ae616bd/6713b2a8ae511a5e70014be5_8120.avif"
+              alt="Ear Rings"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 category-overlay"></div>
+            <div class="absolute bottom-4 left-0 w-full text-center text-white">
+              <h3 class="text-xl font-medium uppercase">Ear Rings</h3>
+            </div>
+          </a>
+
+          <!-- Necklace -->
+          <a href="#" class="relative group overflow-hidden shadow-md">
+            <img
+              src="https://cdn.prod.website-files.com/670f7de6dec5c0c82ae616bd/6713f6589d3ac37ffa7ae3a8_14346.avif"
+              alt="Necklace"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 category-overlay"></div>
+            <div class="absolute bottom-4 left-0 w-full text-center text-white">
+              <h3 class="text-xl font-medium uppercase">Necklace</h3>
+            </div>
+          </a>
+
+          <!-- Bracelets -->
+          <a href="#" class="relative group overflow-hidden shadow-md">
+            <img
+              src="https://cdn.prod.website-files.com/670f7de6dec5c0c82ae616bd/6713f7a6553d6eed011ee167_24485.avif"
+              alt="Bracelets"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 category-overlay"></div>
+            <div class="absolute bottom-4 left-0 w-full text-center text-white">
+              <h3 class="text-xl font-medium uppercase">Bracelets</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Scheme Section - Jewellery Branding Timeline Style -->
+    <section
+      class="py-12 px-4 max-w-7xl mx-auto text-center bg-gray-100 font-[Alice] overflow-hidden"
+    >
+      <div data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-alice mb-4">
+          Our Signature Creation Process
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto">
+          From vision to reality, every step reflects our commitment to timeless
+          elegance, personal storytelling, and masterful craftsmanship.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mt-16 relative">
+        <!-- Center line -->
+        <div
+          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-black bg-opacity-50"
+        ></div>
+
+        <div class="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
+          <!-- Step 1 -->
+          <div class="relative z-10 flex justify-end" data-aos="fade-right">
+            <div
+              class="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-right"
+            >
+              <h3 class="text-xl font-semibold mb-2 text-black">
+                Step 1: Inspiration
+              </h3>
+              <p class="text-gray-600">
+                Your journey starts with a dream — whether a story, a memory, or
+                a moment. We capture its essence to create something truly
+                personal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative z-10 flex justify-start" data-aos="fade-left">
+            <div
+              class="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-left"
+            >
+              <h3 class="text-xl font-semibold mb-2 text-black">
+                Step 2: Bespoke Design
+              </h3>
+              <p class="text-gray-600">
+                From selecting precious stones to sketching unique silhouettes,
+                every element is tailored to your taste and tradition.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative z-10 flex justify-end" data-aos="fade-right">
+            <div
+              class="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-right"
+            >
+              <h3 class="text-xl font-semibold mb-2 text-black">
+                Step 3: Artisan Craft
+              </h3>
+              <p class="text-gray-600">
+                Our master jewellers shape each design by hand—balancing
+                finesse, legacy techniques, and modern precision.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative z-10 flex justify-start" data-aos="fade-left">
+            <div
+              class="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-left"
+            >
+              <h3 class="text-xl font-semibold mb-2 text-black">
+                Step 4: Luxe Presentation
+              </h3>
+              <p class="text-gray-600">
+                Your finished piece is delivered in exquisite packaging — ready
+                for gifting, celebration, or treasuring forever.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-10 px-4 md:px-28 font-[Alice]">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10"
+      >
+        <!-- Right Section -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full"
+        >
+          <!-- Left Section -->
+          <div class="flex flex-col items-start md:items-start gap-4">
+            <a href="#" class="flex items-center space-x-2">
+              <img
+                src="assets/padm_logo.jpg"
+                alt="acme-padm-logo"
+                class="w-[180px]  object-contain"
+              />
+            </a>
+          </div>
+
+          <!-- Mail -->
+          <div>
+            <p class="text-sm text-gray-400">Mail Us</p>
+            <p class="text-lg text-white">info@acmeinfovision.com</p>
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <p class="text-sm text-gray-400">Call Us</p>
+            <p class="text-lg text-white">02162 – 248901
+
+ </p>
+          </div>
+
+          <!-- Address -->
+          <div>
+            <p class="text-sm text-gray-400">Address</p>
+            <p class="text-lg text-white">	
+P4/4, IT Park, Old MIDC Satara, Mahindra Automobiles, Satara - 415 004
+State: Maharashtra Country: India</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
