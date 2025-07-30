@@ -52,7 +52,7 @@
             <a
               href="#"
               onclick="navigateToScheme()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-gem"></i> Scheme</a
             >
           </li>
@@ -60,7 +60,7 @@
             <a
               href="#"
               onclick="navigateToBankDetails()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-building-columns"></i> Bank</a
             >
           </li>
@@ -68,7 +68,7 @@
             <a
               href="#"
               onclick="navigateToKyc()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><img
                 class="w-5 h-6"
                 src="https://cdn-icons-png.flaticon.com/128/18282/18282110.png"
@@ -81,7 +81,7 @@
             <a
               href="#"
               onclick="navigateToRate()"
-              class="flex items-center gap-4 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-4 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-indian-rupee-sign"></i> Rate</a
             >
           </li>
@@ -89,7 +89,7 @@
             <a
               href="#"
               onclick="navigateSchemeRecords()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-file-lines"></i> Records</a
             >
           </li>
@@ -97,7 +97,7 @@
             <a
               href="#"
               onclick="navigateToCustomerCard()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-address-card"></i> Card</a
             >
           </li>
@@ -105,7 +105,7 @@
             <a
               href="#"
               onclick="navigateTransactionHistory()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-clock-rotate-left"></i> History</a
             >
           </li>
@@ -113,7 +113,7 @@
             <a
               href="#"
               onclick="navigateToMyOrder()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-cart-shopping"></i> Order</a
             >
           </li>
@@ -121,7 +121,7 @@
             <a
               href="#"
               onclick="navigateToUserProfile()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-user"></i> Profile</a
             >
           </li>
@@ -129,7 +129,7 @@
             <a
               href="#"
               onclick="navigateToDigitalGold()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-coins"></i> Gold</a
             >
           </li>
@@ -137,7 +137,7 @@
             <a
               href="#"
               onclick="navigateToPanchang()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><img
                 class="w-5 h-5"
                 src="https://cdn-icons-png.flaticon.com/128/3013/3013143.png"
@@ -150,7 +150,7 @@
             <a
               href="#"
               onclick="navigateToSetting()"
-              class="flex items-center gap-3 text-[#2C2C2C] font-medium "
+              class="flex items-center gap-3 text-[#2C2C2C] font-medium"
               ><i class="fa-solid fa-gear"></i> Settings</a
             >
           </li>
@@ -324,20 +324,40 @@
     </div>
 
     <!-- deskstop tabs  -->
-    <div class="font-alice">
-      <!-- Mobile Swiper -->
-      <div class="md:hidden px-2 py-10 ">
-        <div class="swiper tabSwiper">
-          <div class="swiper-wrapper" id="swiperContainer"></div>
-        </div>
-      </div>
-
-      <!-- Desktop Grid -->
+    <!-- Mobile Tabs -->
+    <div class="md:hidden px-4 py-10">
       <div
-        class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4 justify-items-center md:px-4 lg:px-48 py-10"
-        id="gridContainer"
+        id="mobileTabs"
+        class="grid grid-cols-3 gap-4 justify-items-center"
       ></div>
+
+      <!-- Show More Button: Visible only on mobile -->
+      <div class="flex justify-center mt-4 sm:hidden">
+        <button id="toggleBtn" class="text-sm flex flex-col items-center gap-1">
+          <svg
+            id="toggleIcon"
+            class="w-10 h-10 text-[#4E221B] transition-transform duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+          <span id="toggleText" class="text-black">Show More</span>
+        </button>
+      </div>
     </div>
+
+    <div
+      class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4 justify-items-center md:px-4 lg:px-48 py-10"
+      id="gridContainer"
+    ></div>
 
     <!-- About us  -->
     <section class="py-4 px-4 md:px-10">
@@ -571,7 +591,7 @@
               <img
                 src="assets/padm_logo.jpg"
                 alt="acme-padm-logo"
-                class="w-[180px]  object-contain"
+                class="w-[180px] object-contain"
               />
             </a>
           </div>
@@ -585,17 +605,16 @@
           <!-- Phone -->
           <div>
             <p class="text-sm text-gray-400">Call Us</p>
-            <p class="text-lg text-white">02162 – 248901
-
- </p>
+            <p class="text-lg text-white">02162 – 248901</p>
           </div>
 
           <!-- Address -->
           <div>
             <p class="text-sm text-gray-400">Address</p>
-            <p class="text-lg text-white">	
-P4/4, IT Park, Old MIDC Satara, Mahindra Automobiles, Satara - 415 004
-State: Maharashtra Country: India</p>
+            <p class="text-lg text-white">
+              P4/4, IT Park, Old MIDC Satara, Mahindra Automobiles, Satara - 415
+              004 State: Maharashtra Country: India
+            </p>
           </div>
         </div>
       </div>

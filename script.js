@@ -127,117 +127,66 @@ function navigateToHomePage() {
         once: false,
       });
 
-      const items = [
-        {
-          label: "Scheme",
-          icon: "https://cdn-icons-png.flaticon.com/128/10150/10150740.png",
-          action: "navigateToScheme()",
-        },
-        {
-          label: "Bank",
-          icon: "https://cdn-icons-png.flaticon.com/128/522/522554.png",
-          action: "navigateToBankDetails()",
-        },
-        {
-          label: "KYC",
-          icon: "https://cdn-icons-png.flaticon.com/128/18282/18282110.png",
-          action: "navigateToKyc()",
-        },
-        {
-          label: "Rate",
-          icon: "https://cdn-icons-png.flaticon.com/128/592/592015.png",
-          action: "navigateToRate()",
-        },
-        {
-          label: "Records",
-          icon: "https://cdn-icons-png.flaticon.com/128/2910/2910768.png",
-          action: "navigateSchemeRecords()",
-        },
-        {
-          label: "Card",
-          icon: "https://cdn-icons-png.flaticon.com/128/3037/3037255.png",
-          action: "navigateToCustomerCard()",
-        },
-        {
-          label: "History",
-          icon: "https://cdn-icons-png.flaticon.com/128/3503/3503786.png",
-          action: "navigateTransactionHistory()",
-        },
-        {
-          label: "Order",
-          icon: "https://cdn-icons-png.flaticon.com/128/10597/10597732.png",
-          action: "navigateToMyOrder()",
-        },
-        {
-          label: "Profile",
-          icon: "https://cdn-icons-png.flaticon.com/128/1946/1946429.png",
-          action: "navigateToUserProfile()",
-        },
-        {
-          label: "Gold",
-          icon: "https://cdn-icons-png.flaticon.com/128/1473/1473430.png",
-          action: "navigateToDigitalGold()",
-        },
-        {
-          label: "Panchang",
-          icon: "https://cdn-icons-png.flaticon.com/128/3013/3013143.png",
-          action: "navigateToPanchang()",
-        },
-        {
-          label: "Settings",
-          icon: "https://cdn-icons-png.flaticon.com/128/2099/2099058.png",
-          action: "navigateToSetting()",
-        },
-      ];
 
-      function createCard(item, delay = 0) {
-        return `
-          <div onclick="${item.action}" 
-               class="flex flex-col items-center" 
-               data-aos="fade-up" 
-               data-aos-delay="${delay}">
-            <div class="w-[110px] h-[25px] bg-[#37160F] rounded-t-full shadow-lg"></div>
-            <div class="w-[102px] h-[120px] md:w-[120px] md:h-[130px] bg-[#4E221B] clip-banner shadow-lg flex flex-col items-center">
-              <img class="w-14 h-14 my-3 invert" src="${item.icon}" alt="${item.label}" />
-              <p class="text-white font-semibold">${item.label}</p>
-            </div>
+    const items = [
+      { label: "Scheme", icon: "https://cdn-icons-png.flaticon.com/128/10150/10150740.png", action: "navigateToScheme()" },
+      { label: "Bank", icon: "https://cdn-icons-png.flaticon.com/128/522/522554.png", action: "navigateToBankDetails()" },
+      { label: "KYC", icon: "https://cdn-icons-png.flaticon.com/128/18282/18282110.png", action: "navigateToKyc()" },
+      { label: "Rate", icon: "https://cdn-icons-png.flaticon.com/128/592/592015.png", action: "navigateToRate()" },
+      { label: "Records", icon: "https://cdn-icons-png.flaticon.com/128/2910/2910768.png", action: "navigateSchemeRecords()" },
+      { label: "Card", icon: "https://cdn-icons-png.flaticon.com/128/3037/3037255.png", action: "navigateToCustomerCard()" },
+      { label: "History", icon: "https://cdn-icons-png.flaticon.com/128/3503/3503786.png", action: "navigateTransactionHistory()" },
+      { label: "Order", icon: "https://cdn-icons-png.flaticon.com/128/10597/10597732.png", action: "navigateToMyOrder()" },
+      { label: "Profile", icon: "https://cdn-icons-png.flaticon.com/128/1946/1946429.png", action: "navigateToUserProfile()" },
+      { label: "Gold", icon: "https://cdn-icons-png.flaticon.com/128/1473/1473430.png", action: "navigateToDigitalGold()" },
+      { label: "Panchang", icon: "https://cdn-icons-png.flaticon.com/128/3013/3013143.png", action: "navigateToPanchang()" },
+      { label: "Settings", icon: "https://cdn-icons-png.flaticon.com/128/2099/2099058.png", action: "navigateToSetting()" }
+    ];
+
+    function createCard(item, delay = 0) {
+      return `
+        <div onclick="${item.action}" class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="${delay}">
+          <div class="w-[110px] md:w-[130px] h-[25px] bg-[#37160F] rounded-t-full shadow-lg"></div>
+          <div class="w-[102px] h-[120px] md:w-[120px] md:h-[130px] bg-[#4E221B] clip-banner shadow-lg flex flex-col items-center">
+            <img class="w-14 h-14 my-3 invert" src="${item.icon}" alt="${item.label}" />
+            <p class="text-white font-semibold">${item.label}</p>
           </div>
-        `;
-      }
+        </div>`;
+    }
 
-      const swiperContainer = document.getElementById("swiperContainer");
-      const gridContainer = document.getElementById("gridContainer");
+    const mobileTabs = document.getElementById("mobileTabs");
+    const gridContainer = document.getElementById("gridContainer");
 
-      items.forEach((item, index) => {
-        const delay = index * 100; // for staggered animation
+    items.forEach((item, index) => {
+      const cardHTML = createCard(item, index * 100);
 
-        // Mobile swiper slide
-        const swiperSlide = document.createElement("div");
-        swiperSlide.className = "swiper-slide";
-        swiperSlide.innerHTML = createCard(item, delay);
-        swiperContainer.appendChild(swiperSlide);
+      // Mobile
+      const div = document.createElement("div");
+      div.innerHTML = cardHTML;
+      if (index >= 6) div.classList.add("hidden", "more-tab");
+      mobileTabs.appendChild(div);
 
-        // Desktop grid box
-        const gridBox = document.createElement("div");
-        gridBox.innerHTML = createCard(item, delay);
-        gridContainer.appendChild(gridBox);
-      });
+      // Desktop
+      const gridBox = document.createElement("div");
+      gridBox.innerHTML = cardHTML;
+      gridContainer.appendChild(gridBox);
+    });
 
-      // Initialize Swiper
-      new Swiper(".tabSwiper", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        breakpoints: {
-          480: {
-            slidesPerView: 3,
-          },
-        },
-      });
+    // Toggle Show More/Less
+    const toggleBtn = document.getElementById("toggleBtn");
+    const toggleText = document.getElementById("toggleText");
+    const toggleIcon = document.getElementById("toggleIcon");
+
+    let expanded = false;
+
+    toggleBtn.addEventListener("click", () => {
+      const moreTabs = document.querySelectorAll(".more-tab");
+      expanded = !expanded;
+      moreTabs.forEach(tab => tab.classList.toggle("hidden"));
+
+      toggleText.textContent = expanded ? "Show Less" : "Show More";
+      toggleIcon.classList.toggle("rotate-180");
+    });
 
 
     // desktopTabs javscript end
