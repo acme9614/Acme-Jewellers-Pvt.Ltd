@@ -26,6 +26,16 @@ function closeDrawer() {
 function navigateToScheme() {
     Toaster.postMessage('navigateScheme');
   }
+
+function navigateToCatalogues() {
+    Toaster.postMessage('navigateToCatalogues');
+  }
+
+  function navigateToQuickPurchase() {
+    Toaster.postMessage('navigateToQuickPurchase');
+  }
+
+
   
   function navigateToBankDetails() {
     Toaster.postMessage('navigateBankDetails');
@@ -130,6 +140,9 @@ function navigateToHomePage() {
 
     const items = [
       { label: "Scheme", icon: "https://cdn-icons-png.flaticon.com/128/10150/10150740.png", action: "navigateToScheme()" },
+       { label: "Catalogues", icon: "https://cdn-icons-png.flaticon.com/128/29/29341.png", action: "navigateToCatalogues()" }, 
+       { label: "Quick <br> Purchase", icon: "https://cdn-icons-png.flaticon.com/128/1019/1019709.png", action: "navigateToQuickPurchase()" },
+
       { label: "Bank", icon: "https://cdn-icons-png.flaticon.com/128/522/522554.png", action: "navigateToBankDetails()" },
       { label: "KYC", icon: "https://cdn-icons-png.flaticon.com/128/18282/18282110.png", action: "navigateToKyc()" },
       { label: "Rate", icon: "https://cdn-icons-png.flaticon.com/128/592/592015.png", action: "navigateToRate()" },
@@ -147,9 +160,9 @@ function navigateToHomePage() {
       return `
         <div onclick="${item.action}" class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="${delay}">
           <div class="w-[110px] md:w-[130px] h-[25px] bg-[#37160F] rounded-t-full shadow-lg"></div>
-          <div class="w-[102px] h-[120px] md:w-[120px] md:h-[130px] bg-[#4E221B] clip-banner shadow-lg flex flex-col items-center">
+          <div class="w-[102px] h-[140px] md:w-[120px] md:h-[140px] bg-[#4E221B] clip-banner shadow-lg flex flex-col items-center">
             <img class="w-14 h-14 my-3 invert" src="${item.icon}" alt="${item.label}" />
-            <p class="text-white font-semibold">${item.label}</p>
+            <p class="text-white font-semibold text-center">${item.label}</p>
           </div>
         </div>`;
     }
