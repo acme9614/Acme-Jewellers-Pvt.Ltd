@@ -347,7 +347,7 @@
       </div>
     </div>
 
-    <!-- deskstop tabs  -->
+       <!-- deskstop tabs  -->
     <!-- Mobile Tabs -->
     <div class="md:hidden px-4 py-10">
       <div
@@ -355,27 +355,23 @@
         class="grid grid-cols-3 gap-4 justify-items-center"
       ></div>
 
-      <!-- Show More Button: Visible only on mobile -->
-      <div class="flex justify-center mt-4 sm:hidden">
-        <button id="toggleBtn" class="text-sm flex flex-col items-center gap-1">
-          <svg
-            id="toggleIcon"
-            class="w-10 h-10 text-[#4E221B] transition-transform duration-300"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span id="toggleText" class="text-black">Show More</span>
-        </button>
-      </div>
+     <!-- Show More Button: Visible only on mobile -->
+<div class="flex justify-center mt-4 md:hidden">
+  <button id="toggleBtn" class="flex flex-col items-center gap-1 text-sm">
+    <svg
+      id="toggleIcon"
+      class="w-10 h-10 text-[#4E221B] transition-transform duration-300"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+    <span id="toggleText" class="text-black">Show More</span>
+  </button>
+</div>
+
     </div>
 
     <div
